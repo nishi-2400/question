@@ -9,13 +9,14 @@ class Question extends Model
 	//入力ガード
 	protected $guarded = ['id'];
 
-	//バリデーション
-	public static $rules = [
-		'user_id' => 'required',
-		'title' => 'required',
-		'category' => 'required',
-		'body' => 'required'
-	];
+	//質問のステータスリスト
+	private static $questionStatus = [1 => '質問中', 2 => '解決済み'];
+
+	//ステータスゲッター
+	public function getquestionStatus()
+    {
+        return self::$questionStatus[$this->status];
+    }
 
 	//Usersテーブルとリレーション
 	public function user()

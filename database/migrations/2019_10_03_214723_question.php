@@ -19,12 +19,12 @@ class Question extends Migration
             $table->text('title');
             $table->text('category');
             $table->longtext('body');
-            $table->text('status');
+            $table->integer('status');
             $table->timestamps();
 
             $table->index('user_id');
 
-            //参照制約
+            //参照制約-[ユーザー情報]と関連付け
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

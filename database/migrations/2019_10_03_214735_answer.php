@@ -19,12 +19,13 @@ class Answer extends Migration
             $table->unsignedBigInteger('question_id');
             $table->text('title');
             $table->longtext('body');
+            $table->integer('status');
             $table->timestamps();
 
             $table->index('user_id');
             $table->index('question_id');
 
-            //参照制約
+            //参照制約-[ユーザー情報]と[質問情報]と関連付け
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('question_id')->references('id')->on('questions');
         });

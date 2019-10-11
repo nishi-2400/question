@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+
     //入力ガード
 	protected $guarded = ['id'];
+
+	//アンサーのステータスリスト
+	private static $answerStatus = [1 => 'ノーマル', 2 => 'ベストアンサー'];
+
 
 	//バリデーション
 	public static $rules = [
@@ -16,6 +21,12 @@ class Answer extends Model
 		'title' => 'required',
 		'body' => 'required'
 	];
+
+	//ステータスゲッター
+	public function getAnswerStatus()
+    {
+        return self::$answerStatus[$this->status];
+    }
 
 	//Usersテーブルとリレーション
 	public function user()
@@ -32,6 +43,6 @@ class Answer extends Model
     //Commentsデーブルとリレーション
     public function comment()
     {
-    	return $this->hasMany('App\Comment');
+    	return $this->hasMany('App\Comment', 'answer_id');
     }
 }
