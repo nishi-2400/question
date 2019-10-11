@@ -17,7 +17,7 @@
 				<h2 class="mb-3"><i class="far fa-edit mr-3"></i>Edit<small  class="text-muted"> - 編集</small></h2>
 				<!-- 編集処理後の表示 -->
 				@if(isset($msg))
-					<p>{{$msg}}→ <a href="q-detail?id={{$question->id}}">質問ページで確認する</a></p>
+					<p>{{$msg}}<a href="q-detail?id={{$question->id}}">質問ページで確認する</a></p>
 				@endif
 				{{Form::open(['url' => 'questionForm', 'method' => 'post'])}}
 				{{Form::hidden('id', $question->id)}}

@@ -19,7 +19,7 @@ class Question extends Migration
             $table->text('title');
             $table->text('category');
             $table->longtext('body');
-            $table->integer('status');
+            $table->integer('status')->nullable();
             $table->timestamps();
 
             $table->index('user_id');
